@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>House Entry</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="styles.css"> <!-- Link to external CSS file -->
+  <link rel="icon" type="image/x-icon" href="/home_favicon.png">
+
+</head>
+<body>
+  <div class="container">
+    <h1>Welcome to the House Entry System</h1>
+
+    <label>
+      Are you trying to enter the house?
+      <br>
+      <input type="radio" name="houseEntry" value="yes" id="yesRadio" onchange="toggleMobileNumber()"> Yes
+      <input type="radio" name="houseEntry" value="no" id="noRadio" onchange="toggleMobileNumber()"> No
+    </label>
+    <br>
+
+    <div id="mobileNumberInput" class="hidden">
+      <label for="phoneNumber">Enter Your Mobile Number:</label>
+      <input type="text" id="phoneNumber">
+    </div>
+
+    <button onclick="submitPhoneNumber()">Submit</button>
+
+    <p id="confirmationMessage" class="hidden"></p>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
