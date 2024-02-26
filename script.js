@@ -62,13 +62,13 @@ function displayLatestOTP(submittedPhoneNumber) {
   fetch(`/checkOTP?phoneNumber=${submittedPhoneNumber}`)
     .then(response => response.json())
     .then(data => {
-      const otpDisplay = document.getElementById('otp');
+      const otpMessage = document.getElementById('otpMessage'); // Updated: Get the span element
       const otpSection = document.querySelector('.otp-section');
       
-      if (data.otp && data.phoneNumber === submittedPhoneNumber) {
-        console.log(`Latest OTP found: ${data.otp}`); // Debug log to check OTP retrieval
+      if (data.verified=== "1" || data.verified === "0") {
+        console.log(`Latest OTP found in script.js: ${data.otp}`); // Debug log to check OTP retrieval
         
-        otpDisplay.textContent = `${data.otp}`;
+        otpMessage.textContent = data.message; // Set the message content
         otpSection.classList.remove('hidden'); // Show the OTP section
       } else {
         console.log('No valid OTP available or mismatch'); // Debug log for no valid OTP or mismatch
@@ -80,6 +80,7 @@ function displayLatestOTP(submittedPhoneNumber) {
       console.error('Error:', error);
     });
 }
+
 
 
 

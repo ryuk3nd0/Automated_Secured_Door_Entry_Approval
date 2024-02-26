@@ -46,21 +46,31 @@ app.get('/checkOTP', (req, res) => {
       const lines = data.trim().split('\n').filter(line => line.trim() !== ''); // Remove empty lines
       let latestOTP = '';
       let latestPhoneNumber = '';
+      let latestVerified = '';
 
       // Find the latest non-empty entry and its associated OTP
       for (let i = lines.length - 1; i >= 0; i--) {
         const line = lines[i].trim();
         if (line !== '') {
           const columns = line.split(',');
-          latestOTP = columns[columns.length - 1].trim();
-          latestPhoneNumber = columns[2].trim(); // Assuming phone number is the third column
-          console.log(`Latest OTP found: ${latestOTP}`);
+          latestOTP = columns[columns.length - 2].trim(); //OTP is the second last column
+          latestPhoneNumber = columns[2].trim(); //Phone number is the third column
+          latestVerified = columns[columns.length - 1].trim(); //Verified is the last column
+          if(!latestOTP) console.log(`Latest OTP found: ${latestOTP}`);
           break;
         }
       }
 
-      if (latestOTP && latestPhoneNumber === req.query.phoneNumber) {
-        res.status(200).json({ otp: latestOTP, phoneNumber: latestPhoneNumber });
+      if (latestOTP && latestPhoneNumber === req.query.phoneNumber && latestVerified === '1') {
+        res.status(200).json({ otp: latestOTP, 
+          phoneNumber: latestPhoneNumber, 
+          verified: latestVerified,
+          message: '🎉 Congratulations 🎉Your request has been approved. Use this OTP: ' + latestOTP + ' to unlock the door.'});
+      } else if(latestVerified === '0') {
+        res.status(200).json({ otp: latestOTP, 
+          phoneNumber: latestPhoneNumber, 
+          verified: latestVerified,
+          message: '❌ Sorry ❌ Your request has been declined.'});
       } else {
         res.status(404).send('No valid OTP available');
       }
