@@ -106,7 +106,7 @@ def detect_faces_and_process():
                     send_image_telegram(image_path)
                 initial_rows = current_rows
 
-        cv2.imshow('frame', frame)
+        #cv2.imshow('frame', frame)
         if cv2.waitKey(1) == ord('q'):
             break
 
