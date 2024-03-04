@@ -1,10 +1,8 @@
 import cv2
 import time
-import csv
-import random
-import string
 import os
 import telebot
+import RPi.GPIO as GPIO
 import threading
 
 # Telegram bot setup

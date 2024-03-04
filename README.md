@@ -10,6 +10,8 @@ ngrok config add-authtoken 1yK10TGY6YQDxBudSX2hcxvi4Pp_Aw7HaSCKqV43H4fBUdUX
 
 raspberrypi.local
 
+source /home/pi/py-venv/venv/bin/activate
+
 Then run:
 
 node server.js
