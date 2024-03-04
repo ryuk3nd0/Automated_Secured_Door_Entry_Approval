@@ -40,7 +40,7 @@ def callback_query(call):
     global initial_rows
     if call.data == 'Approve':
         bot.send_message(chat_id, "You've approved the entry ✅")
-        print("User selected Approve ✅") 
+        print("User selected Approve") 
         # Generating and appending the OTP to the last non-empty row
         with open(file_path, 'r+', newline='') as file:
             rows = list(csv.reader(file))
@@ -57,7 +57,7 @@ def callback_query(call):
                 csv.writer(file).writerows(rows)
     elif call.data == 'Decline':
         bot.send_message(chat_id, "Entry declined ❌")
-        print("User selected Decline ❌")
+        print("User selected Decline")
         # Marking the last row as unverified
         with open(file_path, 'r+', newline='') as file:
             rows = list(csv.reader(file))
