@@ -20,7 +20,7 @@ app.post('/submitPhoneNumber', (req, res) => {
     } else {
       console.log('Data appended to file');
       // Change the message below to the desired message
-      res.status(200).send('Your request has been accepted. You will be notified with an SMS if verified.');
+      res.status(200).send('Your request has been accepted. You will be notified with OTP if verified.');
 
       canCheckOTP = false; // Disable OTP checking after a successful submission
 
