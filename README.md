@@ -4,10 +4,9 @@ node
 npm
 ngrok
 
-Also add the ngrok auth token using following command:
+Also add the ngrok auth token using the following command:
 
-ngrok config add-authtoken 1yK10TGY6YQDxBudSX2hcxvi4Pp_Aw7HaSCKqV43H4fBUdUX
-
+ngrok config add-authtoken <<>>
 raspberrypi.local
 
 source /home/pi/py-venv/venv/bin/activate
